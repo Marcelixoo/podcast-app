@@ -1,0 +1,28 @@
+.podcastviewcontainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(234, 238, 243, 1);
+}
+.podcastviewimg {
+  width: 200px;
+  height: 300px;
+  background-color: darkgray;
+  margin-right: 9px;
+  margin-top: 28px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.podcastviewmain {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  width: 62%;
+}
+.podcastviewepisodeslist {
+  background-color: white;
+  padding: 15px;
+}

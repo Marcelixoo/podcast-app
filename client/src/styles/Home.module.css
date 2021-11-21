@@ -1,0 +1,32 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(234, 238, 243, 1);
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 62%;
+}
+
+.podcontainer {
+  background-color: white;
+  padding: 15px;
+}
+
+.yourpodcasts {
+  color: darkgrey;
+  border-bottom: 1px solid rgba(232, 232, 232, 1);
+  padding-bottom: 5px;
+}
+
+.breadcrumb {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

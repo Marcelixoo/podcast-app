@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "episodes",
+  "info": {
+    "name": "episodes",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "mp3Link": {
+      "type": "string",
+      "required": true,
+      "regex": "[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)?"
+    },
+    "podcast": {
+      "model": "podcasts"
+    }
+  }
+}
