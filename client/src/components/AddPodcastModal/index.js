@@ -1,41 +1,42 @@
 import { useState } from "react";
 
-import strapiApi from "../../services/strapi";
+import { saveNewPodcast } from "../../services/strapi";
 
 import { EpisodeCard } from "../EpisodeCard";
 
 export function AddPodcastModal({ closeModal }) {
   const [episodes, setEpisode] = useState([]);
   const [disable, setDisable] = useState(false);
+
   async function savePodcast() {
     setDisable(true);
-    const podcastName = window.podcastName.value;
-    const podcastImageUrl = window.podcastImageUrl.value;
-    const podcastAuthor = window.podcastAuthor.value;
 
-    const episodesIds = await Promise.all(episodes.map(async (episode) => {
-      const { data } = await strapiApi.post("/episodes", { ...episode, });
-      return data.id;
-    }));
+    const podcast = {
+      name: window.podcastName.value,
+      author: window.podcastAuthor.value,
+      imageUrl: window.podcastImageUrl.value,
+      episodes: episodes,
+    };
 
-    await strapiApi.post("/podcasts", {
-      name: podcastName,
-      author: podcastAuthor,
-      imageUrl: podcastImageUrl,
-      episodes: episodesIds,
-    });
+    await saveNewPodcast(podcast);
+
     setDisable(false);
     closeModal();
     location.reload();
   }
+
   function addEpisode() {
-    const episodeName = window.episodeName.value;
-    const episodeMp3Link = window.episodeMp3Link.value;
-    setEpisode([...episodes, { name: episodeName, mp3Link: episodeMp3Link }]);
+    const newEpisode = {
+      name: window.episodeName.value,
+      mp3Link: window.episodeMp3Link.value,
+    }
+    setEpisode([...episodes, newEpisode]);
   }
+
   function removeEpisode(index) {
     setEpisode(episodes.filter((_, i) => i != index));
   }
+
   return (
     <div className="modal">
       <div className="modal-backdrop" onClick={closeModal}></div>
