@@ -20,7 +20,7 @@ export default function Home() {
 
   const togglePodcastModal = () => setShouldShowModal(!shouldShowModal);
 
-  console.log({podcasts});
+  const addPodcast = (podcast) => setPodcasts([...podcasts, podcast]);
 
   return (
     <div className={styles.container}>
@@ -47,7 +47,9 @@ export default function Home() {
             ))}
           </div>
 
-          {shouldShowModal && (<AddPodcastModal closeModal={togglePodcastModal} />)}
+          {shouldShowModal && (
+            <AddPodcastModal closeModal={togglePodcastModal} addPodcastToLocalStore={addPodcast} />
+          )}
         </div>
       </main>
     </div>

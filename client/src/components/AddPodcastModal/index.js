@@ -4,25 +4,29 @@ import { saveNewPodcast } from "../../services/strapi";
 
 import { EpisodeCard } from "../EpisodeCard";
 
-export function AddPodcastModal({ closeModal }) {
+export function AddPodcastModal({ closeModal, addPodcastToLocalStore }) {
   const [episodes, setEpisode] = useState([]);
   const [disable, setDisable] = useState(false);
 
-  async function savePodcast() {
-    setDisable(true);
+  const lockSaveButton = () => setDisable(true);
+  const releaseSaveButton = () => setDisable(false);
 
-    const podcast = {
+  async function savePodcast() {
+    lockSaveButton();
+
+    const newPodcast = {
       name: window.podcastName.value,
       author: window.podcastAuthor.value,
       imageUrl: window.podcastImageUrl.value,
       episodes: episodes,
     };
 
-    await saveNewPodcast(podcast);
+    await saveNewPodcast(newPodcast);
 
-    setDisable(false);
+    addPodcastToLocalStore(newPodcast);
+
+    releaseSaveButton();
     closeModal();
-    location.reload();
   }
 
   function addEpisode() {
