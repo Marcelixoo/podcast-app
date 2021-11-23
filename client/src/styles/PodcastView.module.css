@@ -1,5 +1,5 @@
 .podcastviewcontainer {
-  min-height: 100vh;
+  width: 80%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -7,11 +7,12 @@
   background-color: rgba(234, 238, 243, 1);
 }
 .podcastviewimg {
-  width: 200px;
-  height: 300px;
+  max-height: 20vw;
+  /* width: 50vw;
+  height: 50vw; */
+  padding: 8vw 10vw;
+  margin-right: 1rem;
   background-color: darkgray;
-  margin-right: 9px;
-  margin-top: 28px;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -21,8 +22,19 @@
   display: flex;
   flex-direction: row;
   width: 62%;
+  padding: 1rem;
 }
 .podcastviewepisodeslist {
   background-color: white;
-  padding: 15px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+@media(max-width: 480px) {
+  .podcastviewmain {
+    flex-direction: column;
+    width: 100%;
+  }
 }

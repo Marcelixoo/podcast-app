@@ -2,6 +2,7 @@ import styles from "./EpisodeCard.module.css";
 
 export function EpisodeCard({ episode, defaultImage }) {
   const { name, mp3Link } = episode;
+
   return (
     <div className={styles.episodeCard}>
       <div
@@ -14,7 +15,7 @@ export function EpisodeCard({ episode, defaultImage }) {
           <h4>{name}</h4>
         </div>
         <div className={styles.episodeCardAudio}>
-          <audio controls src={mp3Link} />
+          <audio controls src={mp3Link} style={{ width: "100%" }} />
         </div>
       </div>
     </div>
