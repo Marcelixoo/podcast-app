@@ -1,4 +1,6 @@
 import { useRouter } from 'next/router';
+import Link from 'next/link';
+import { FaArrowLeft } from 'react-icons/fa';
 
 import strapiApi from '../../services/strapi';
 
@@ -29,13 +31,20 @@ export default function PodcastView({ podcast }) {
   }
 
   return (
-    <div style={{ margin: "0 auto", maxWidth: "1480px" }} >
+    <div style={{ maxWidth: "1480px" }} >
+      <Link href="/" passHref>
+        <a style={{ display: "block", padding: "2rem 8rem", fontSize: "2rem" }}>
+          <FaArrowLeft />
+        </a>
+      </Link>
       <div className={styles.podcastviewcontainer}>
         <div className={styles.podcastviewmain}>
-          <div id="logo"
-            className={styles.podcastviewimg}
-            style={{ backgroundImage: `url(${podcast?.imageUrl})` }}
-          ></div>
+          <div>
+            <div
+              className={styles.podcastviewimg}
+              style={{ backgroundImage: `url(${podcast?.imageUrl})` }}
+            ></div>
+          </div>
           <div style={{ width: "100%" }}>
             <div className={styles.podcastviewname}>
               <h1>{podcast?.name}</h1>

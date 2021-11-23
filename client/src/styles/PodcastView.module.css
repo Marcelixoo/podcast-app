@@ -1,4 +1,5 @@
 .podcastviewcontainer {
+  margin: 0 auto;
   width: 80%;
   display: flex;
   flex-direction: column;
@@ -8,8 +9,6 @@
 }
 .podcastviewimg {
   max-height: 20vw;
-  /* width: 50vw;
-  height: 50vw; */
   padding: 8vw 10vw;
   margin-right: 1rem;
   background-color: darkgray;
@@ -21,7 +20,7 @@
   flex: 1;
   display: flex;
   flex-direction: row;
-  width: 62%;
+  width: 100%;
   padding: 1rem;
 }
 .podcastviewepisodeslist {
@@ -36,5 +35,9 @@
   .podcastviewmain {
     flex-direction: column;
     width: 100%;
+  }
+
+  .podcastviewimg {
+    padding: 20vw 10vw;
   }
 }
