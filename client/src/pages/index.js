@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import styles from '../styles/Home.module.css'
 
@@ -8,19 +8,14 @@ import strapiApi from '../services/strapi';
 import { AddPodcastModal } from '../components/AddPodcastModal';
 import { PodcastCard } from '../components/PodcastCard';
 
-export default function Home() {
-  const [podcasts, setPodcasts] = useState([]);
+export default function Home({ currentPodcasts }) {
+  const [podcasts, setPodcasts] = useState(currentPodcasts);
   const [shouldShowModal, setShouldShowModal] = useState(false);
-
-  useEffect(async () => {
-    const { data } = await strapiApi.get("/podcasts");
-
-    setPodcasts(data);
-  }, []);
 
   const togglePodcastModal = () => setShouldShowModal(!shouldShowModal);
 
   const addPodcast = (podcast) => setPodcasts([...podcasts, podcast]);
+
 
   return (
     <div className={styles.container}>
@@ -31,7 +26,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <div className={styles.breadcrumb}>
-          <h2>Hello, Good Day!</h2>
+          <h2>The Podcast</h2>
           <span>
             <button onClick={togglePodcastModal}>Add Podcast</button>
           </span>
@@ -54,4 +49,14 @@ export default function Home() {
       </main>
     </div>
   );
+}
+
+export async function getStaticProps({ params }) {
+  const { data: currentPodcasts } = await strapiApi.get("/podcasts");
+
+  return {
+    props: {
+      currentPodcasts,
+    },
+  }
 }
