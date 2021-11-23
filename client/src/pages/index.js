@@ -13,9 +13,9 @@ export default function Home() {
   const [shouldShowModal, setShouldShowModal] = useState(false);
 
   useEffect(async () => {
-    const response = await strapiApi.get("/podcasts");
+    const { data } = await strapiApi.get("/podcasts");
 
-    setPodcasts(response?.data);
+    setPodcasts(data);
   }, []);
 
   const togglePodcastModal = () => setShouldShowModal(!shouldShowModal);
