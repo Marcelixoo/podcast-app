@@ -1,7 +1,7 @@
 # podcast-app
 
 This is a studying project built with Next.js and Strapi.
-It implements a podcast app based on the tutorial [How To Build A Podcast App Using Strapi and Next.js](https://strapi.io/blog/how-to-build-a-podcast-app-using-strapi-and-nextjs).
+It provides a simple web application to catalog and listen to podcasts.
 
 ## Getting Started
 First, run the development server:
